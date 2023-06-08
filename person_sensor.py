@@ -38,7 +38,7 @@ PERSON_SENSOR_RESULT_BYTE_COUNT = struct.calcsize(PERSON_SENSOR_RESULT_FORMAT)
 class PersonSensor(object):
     
     def __init__(self, bus=0, sda=8, scl=9):
-        self.i2c = I2C(0, sda=Pin(8), scl=Pin(9), freq=400_000)
+        self.i2c = I2C(bus, sda=Pin(sda), scl=Pin(scl), freq=400_000)
         time.sleep_ms(200)  # Small wait to ensure I2C sets up properly
         
         devices = self.i2c.scan()
